@@ -24,3 +24,12 @@ export interface User{
     id: number;
     email: string;
 }
+export type ProjectType =
+    | "nodejs"
+    | "nodejs-typescript"
+    | "python"
+    | "go"
+    | "ruby"
+    | "java"
+    | "dotnet"
+    | "php";

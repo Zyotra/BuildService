@@ -9,7 +9,6 @@ const uploadFile = async (filePath: string) => {
     if (!fs.existsSync(filePath)) {
         throw new Error(`Path does not exist: ${filePath}`);
     }
-
     const dirArray = filePath.split("/");
     const repoId = dirArray[dirArray.length - 2];
 
