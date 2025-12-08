@@ -1,6 +1,9 @@
 import { Elysia } from "elysia";
 import { config } from "dotenv";
 import checkAuthPlugin from "./middlewares/checkAuth";
+import cloneRepoController from "./controllers/cloneRepoController";
+import buildRepoController from "./controllers/BuildRepoController";
+import uploadBuildController from "./controllers/uploadBuildController";
 config();
 const app = new Elysia()
 
@@ -12,6 +15,19 @@ app.get("/", ({ set }) => {
     Time: new Date().toISOString(),
   };
 });
+
+
+app
+  .use(checkAuthPlugin)
+  .post("/build-repo", buildRepoController)
+  .post("/upload-build",uploadBuildController)
+
+  
+app
+  .use(checkAuthPlugin)
+  .post("/clone-repo", cloneRepoController)
+
+
 app.listen(Number(process.env.PORT));
 
 console.log(
